@@ -1,19 +1,18 @@
-const express = require("express"); //inbuilt package
+const express = require("express"); 
 const fs = require("fs");
 const app = express();
-//const PORT = 2000;
 const PORT = process.env.PORT || 3030;
 
-//default path
+
 app.get("/", (req, res) => {
   res.send("Welcome To Nodejs-FileSystem");
 });
 
-//API 1
+
 app.get("/createfile", (req, res) => {
-  //file name as date-time.text
+  
   const currentDate = new Date();
-  //padStart - restricting the result to 2 digits and 0 will be added to prefix to make it 2 digits
+  
   const formatedDate = `${currentDate.getFullYear()}-${(
     currentDate.getMonth() + 1
   )
@@ -36,9 +35,9 @@ app.get("/createfile", (req, res) => {
   res.send({ fileName: fileName });
 });
 
-//API 2
+
 app.get("/retrievefile", (req, res) => {
-  //read directory
+  
   var result;
   var finalresult = [];
   fs.readdir("./", (err, files) => {
@@ -49,4 +48,4 @@ app.get("/retrievefile", (req, res) => {
   });
 });
 
-app.listen(PORT, () => console.log("Server started in the port ", PORT)); //port number to listen
+app.listen(PORT, () => console.log("Server started in the port ", PORT)); 
